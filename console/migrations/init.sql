@@ -552,3 +552,38 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2016-03-22 18:07:19
+DROP TABLE IF EXISTS `pop_page`;
+CREATE TABLE `pop_page` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `use_layout` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0:不使用1:使用',
+  `content` text NOT NULL COMMENT '内容',
+  `title` varchar(50) NOT NULL COMMENT '标题',
+  `name` varchar(50) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='单页';
+
+LOCK TABLES `pop_page` WRITE;
+/*!40000 ALTER TABLE `pop_page` DISABLE KEYS */;
+INSERT INTO `pop_page` VALUES (1,1,'<p style=\"margin-top: 0px; margin-bottom: 10px; white-space: normal; box-sizing: border-box; color: rgb(51, 51, 51); font-family: &#39;Helvetica Neue&#39;, Helvetica, Arial, &#39;Hiragino Sans GB&#39;, &#39;Microsoft Yahei&#39;, sans-serif; font-size: 14px; line-height: 20px; background-color: rgb(255, 255, 255);\">本网站所收集的部分公开资料来源于互联网，转载的目的在于传递更多信息及用于网络分享，并不代表本站赞同其观点和对其真实性负责，也不构成任何其他建议。本站部分作品是由网友自主投稿和发布、编辑整理上传，对此类作品本站仅提供交流平台，不为其版权负责。如果您发现网站上有侵犯您的知识产权的作品，请与我们取得联系，我们会及时修改或删除。</p><p style=\"margin-top: 0px; margin-bottom: 10px; white-space: normal; box-sizing: border-box; color: rgb(51, 51, 51); font-family: &#39;Helvetica Neue&#39;, Helvetica, Arial, &#39;Hiragino Sans GB&#39;, &#39;Microsoft Yahei&#39;, sans-serif; font-size: 14px; line-height: 20px; background-color: rgb(255, 255, 255);\">本网站所提供的信息，只供参考之用。本网站不保证信息的准确性、有效性、及时性和完整性。本网站及其雇员一概毋须以任何方式就任何信息传递或传送的失误、不准确或错误，对用户或任何其他人士负任何直接或间接责任。在法律允许的范围内，本网站在此声明，不承担用户或任何人士就使用或未能使用本网站所提供的信息或任何链接所引致的任何直接、间接、附带、从属、特殊、惩罚性或惩戒性的损害赔偿。</p><p style=\"margin-top: 0px; margin-bottom: 10px; white-space: normal; box-sizing: border-box; color: rgb(51, 51, 51); font-family: &#39;Helvetica Neue&#39;, Helvetica, Arial, &#39;Hiragino Sans GB&#39;, &#39;Microsoft Yahei&#39;, sans-serif; font-size: 14px; line-height: 20px; background-color: rgb(255, 255, 255);\">电子邮件：332672087#qq.com（发邮件时，请将“#”替换为“@”）</p><p style=\"margin-top: 0px; margin-bottom: 10px; white-space: normal; box-sizing: border-box; color: rgb(51, 51, 51); font-family: &#39;Helvetica Neue&#39;, Helvetica, Arial, &#39;Hiragino Sans GB&#39;, &#39;Microsoft Yahei&#39;, sans-serif; font-size: 14px; line-height: 20px; background-color: rgb(255, 255, 255);\">联系电话：18045665692</p><p><br/></p>','免责声明','mianze'),(2,1,'<p><span style=\"color: rgb(51, 51, 51); font-family: &#39;Helvetica Neue&#39;, Helvetica, Arial, &#39;Hiragino Sans GB&#39;, &#39;Microsoft Yahei&#39;, sans-serif; font-size: 14px; line-height: 20px; background-color: rgb(255, 255, 255);\">本站基于YII2开发，仅用作学习交流。如需源码请点击站点最下边的获取源码。</span></p>','关于我们','aboutus');
+/*!40000 ALTER TABLE `pop_page` ENABLE KEYS */;
+UNLOCK TABLES;
+
+DROP TABLE IF EXISTS `pop_favourite`;
+CREATE TABLE `pop_favourite` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `article_id` int(11) NOT NULL,
+  `created_at` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+DROP TABLE IF EXISTS `pop_reward`;
+CREATE TABLE `pop_reward` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `article_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `money` int(11) NOT NULL,
+  `created_at` int(10) NOT NULL,
+  `updated_at` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
